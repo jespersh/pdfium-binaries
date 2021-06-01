@@ -36,7 +36,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: release-artifact
-          path: pdfium-windows-x86-v8-release.zip
+          path: pdfium-windows-x86-v8.zip
           if-no-files-found: error
 
 
@@ -61,5 +61,5 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: release-artifact
-          path: pdfium-windows-x64-v8-release.zip
+          path: pdfium-windows-x64-v8.zip
           if-no-files-found: error
