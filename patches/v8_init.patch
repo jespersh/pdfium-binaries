@@ -15,20 +15,31 @@ new file mode 100644
 index 000000000..18fb89dd2
 --- /dev/null
 +++ b/fpdfsdk/fpdf_libs.cpp
-@@ -0,0 +1,22 @@
+@@ -0,0 +1,32 @@
 +#include "public/fpdfview.h"
 +
++#include "libplatform/libplatform.h"
++#include "public/fpdf_formfill.h"
 +#include "v8.h"
 +
 +extern "C"
 +{
 +
++FPDF_EXPORT FPDF_FORMHANDLE FPDF_CALLCONV
++FPDFDOC_InitFormFillEnvironmentEx(FPDF_DOCUMENT document,
++                                FPDF_FORMFILLINFO* formInfo,
++                                IPDF_JSPLATFORM* jsPlatform) {
++  formInfo->m_pJsPlatform = jsPlatform;
++  jsPlatform->m_pFormfillinfo = formInfo;
++  return FPDFDOC_InitFormFillEnvironment(document, formInfo);
++}
++
 +FPDF_EXPORT void FPDF_CALLCONV FPDF_InitEmbeddedLibraries(const char* resourcePath)
 +{
-+    v8::V8::InitializeICU();
-+
++    v8::V8::InitializeICUDefaultLocation(resourcePath);
 +    v8::V8::InitializeExternalStartupData(resourcePath);
-+
++    v8::Platform* platform = v8::platform::NewDefaultPlatform().release();
++    v8::V8::InitializePlatform(platform);
 +    v8::V8::Initialize();
 +
 +    // By enabling predictable mode, V8 won't post any background tasks.
@@ -43,7 +54,7 @@ new file mode 100644
 index 000000000..aa58f9ede
 --- /dev/null
 +++ b/public/fpdf_libs.h
-@@ -0,0 +1,25 @@
+@@ -0,0 +1,42 @@
 +#ifndef FPDF_LIBS_H_
 +#define FPDF_LIBS_H_
 +
@@ -52,6 +63,23 @@ index 000000000..aa58f9ede
 +#ifdef __cplusplus
 +extern "C" {
 +#endif
++
++/*
++ * Function: FPDFDOC_InitFormFillEnvironment
++ *       Initialize form fill environment.
++ * Parameters:
++ *       document        -   Handle to document from FPDF_LoadDocument().
++ *       pFormFillInfo   -   Pointer to a FPDF_FORMFILLINFO structure.
++ *       pJsPlatform     -   Pointer to a IPDF_JSPLATFORM structure.
++ * Return Value:
++ *       Handle to the form fill module, or NULL on failure.
++ * Comments:
++ *       This function should be called before any form fill operation.
++ */
++FPDF_EXPORT FPDF_FORMHANDLE FPDF_CALLCONV
++FPDFDOC_InitFormFillEnvironmentEx(FPDF_DOCUMENT document,
++                                  FPDF_FORMFILLINFO* formInfo,
++                                  IPDF_JSPLATFORM* jsPlatform);
 +
 +// Function: FPDF_InitEmbeddedLibraries
 +//          Initialize embedded libraries (v8, iuctl) included in pdfium

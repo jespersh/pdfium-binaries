@@ -1,12 +1,14 @@
-[![Total number of downloads](https://img.shields.io/github/downloads/bblanchon/pdfium-binaries/total.svg)](https://github.com/bblanchon/pdfium-binaries/releases)
-[![Windows Build status](https://ci.appveyor.com/api/projects/status/85rqdhpyxt589700?svg=true)](https://ci.appveyor.com/project/bblanchon/pdfium-binaries)
-[![Linux/macOS Build Status](https://travis-ci.org/bblanchon/pdfium-binaries.svg?branch=master)](https://travis-ci.org/bblanchon/pdfium-binaries)
+## Updated (1-6-2021)
+
+This is an updated fork of the archived **[bblanchon/pdfium-binaries](https://github.com/bblanchon/pdfium-binaries)** project. It is available as `PdfiumViewer.Forms` via nuget and includes the following changes/ updates:
+
+- Modified for support for [jespersh/PdfiumViewer](https://github.com/jespersh/PdfiumViewer)
 
 # Pre-compiled binaries of PDFium
 
 This project hosts pre-compiled binaries of the [PDFium library](https://pdfium.googlesource.com/pdfium/).
 
-See [Releases page](https://github.com/bblanchon/pdfium-binaries/releases) to download binaries.
+See [Releases page](https://github.com/jespersh/pdfium-binaries/releases) to download binaries.
 
 ### Download links
 
@@ -20,28 +22,13 @@ Here are the download links for latest release:
   </tr>
   <tr>
     <td>Windows 32-bit</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-windows-x86.zip">pdfium-windows-x86.zip</a> (2 MB)</td>
-    <td>Unavailable (buildtime > 2h)</td>
+    <td>Unavailable see bblanchon</td>
+    <td><a href="https://github.com/jespersh/pdfium-binaries/releases/latest/download/pdfium-windows-x86-v8.zip">pdfium-windows-x86-v8.zip</a> (12 MB)</td>
   </tr>
   <tr>
     <td>Windows 64-bit</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-windows-x64.zip">pdfium-windows-x64.zip</a> (2 MB)</td>
-    <td>Unavailable (buildtime > 2h)</td>
-  </tr>
-  <tr>
-    <td>Linux</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-linux.tgz">pdfium-linux.tgz</a> (6 MB)</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-linux-v8.tgz">pdfium-linux-v8.tgz</a> (37 MB)</td>
-  </tr>
-  <tr>
-    <td>macOS (Intel)</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-darwin-x64.tgz">pdfium-darwin-x64.tgz</a> (6 MB)</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-darwin-x64-v8.tgz">pdfium-darwin-x64-v8.tgz</a> (42 MB)</td>
-  </tr>
-  <tr>
-    <td>macOS (ARM)</td>
-    <td><a href="https://github.com/bblanchon/pdfium-binaries/releases/latest/download/pdfium-darwin-arm64.tgz">pdfium-darwin-arm64.tgz</a> (6 MB)</td>
-    <td>-</td>
+    <td>Unavailable see bblanchon</td>
+    <td><a href="https://github.com/jespersh/pdfium-binaries/releases/latest/download/pdfium-windows-x64-v8.zip">pdfium-windows-x64-v8.zip</a> (12 MB)</td>
   </tr>
 </table>
 
@@ -96,5 +83,3 @@ universal archive.
 ---
 
 This project isn't affilated with Google nor Foxit.
-
-We are very thankful to [AppVeyor](https://www.appveyor.com/) and [Travis CI](https://travis-ci.org/) for extending the build time limit, which allows us to build PDFium with V8.

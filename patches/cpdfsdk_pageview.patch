@@ -1,0 +1,14 @@
+diff --git a/fpdfsdk/cpdfsdk_pageview.cpp b/fpdfsdk/cpdfsdk_pageview.cpp
+index 75719fa2a..b6c695205 100644
+--- a/fpdfsdk/cpdfsdk_pageview.cpp
++++ b/fpdfsdk/cpdfsdk_pageview.cpp
+@@ -288,7 +288,8 @@ bool CPDFSDK_PageView::OnFocus(uint32_t nFlag, const CFX_PointF& point) {
+ 
+ bool CPDFSDK_PageView::OnLButtonDown(uint32_t nFlag, const CFX_PointF& point) {
+   ObservedPtr<CPDFSDK_Annot> pAnnot(GetFXWidgetAtPoint(point));
+-  if (!pAnnot) {
++  ObservedPtr<CPDFSDK_Annot> pFocusAnnot(GetFocusAnnot());
++  if (!pAnnot || (pAnnot && pFocusAnnot && pFocusAnnot != pAnnot)) {
+     m_pFormFillEnv->KillFocusAnnot(nFlag);
+     return false;
+   }

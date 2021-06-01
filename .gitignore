@@ -1,0 +1,9 @@
+.gclient
+.gclient_entries
+/.cipd/
+/.vs/
+/pdfium-windows-x64-v8/
+/pdfium-windows-x86-v8/
+/staging/
+/example/out/
+/*.zip

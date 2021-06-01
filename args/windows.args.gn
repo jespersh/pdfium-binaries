@@ -12,3 +12,4 @@ pdf_enable_xfa = false
 
 # Enable experimental win32 GDI APIs.
 pdf_use_win32_gdi = true
+pdf_enable_click_logging = true
