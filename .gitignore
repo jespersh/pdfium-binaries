@@ -7,3 +7,5 @@
 /staging/
 /example/out/
 /*.zip
+/pdfium/
+/depot_tools/
