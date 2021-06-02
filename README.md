@@ -42,11 +42,13 @@ Here are the nuget links for latest release:
     <PdfiumBinariesOutputFolder>runtimes\</PdfiumBinariesOutputFolder>
     <PdfiumX64BinaryOutputFolder>win-x64\natives\</PdfiumX64BinaryOutputFolder>
     <PdfiumX64IcudtlDatOutputFolder>runtimes\</PdfiumX64IcudtlDatOutputFolder>
+    <PdfiumX86BinaryOutputFolder>win-x86\natives\</PdfiumX86BinaryOutputFolder>
+    <PdfiumX86IcudtlDatOutputFolder>runtimes\</PdfiumX86IcudtlDatOutputFolder>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PDFium.forms.x64.v8-xfa" Version="4522.0.3" />
-    <PackageReference Include="PDFium.forms.x86.v8-xfa" Version="4522.0.3" />
+    <PackageReference Include="PDFium.forms.x64.v8-xfa" Version="4522.0.4" />
+    <PackageReference Include="PDFium.forms.x86.v8-xfa" Version="4522.0.4" />
   </ItemGroup>
 
 </Project>
