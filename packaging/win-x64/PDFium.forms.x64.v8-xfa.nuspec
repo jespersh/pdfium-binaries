@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>PDFium.forms.x64.v8-xfa</id>
+    <version>4522.0.1</version>
+    <title>64-bit PDFium for Windows with V8 and XFA</title>
+    <authors>jespersh, The Chromium Project, Google, Foxit, Bluegrams</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/jespersh/pdfium-binaries/</projectUrl>
+    <description>Native 64-bit PDFium DLL for Windows with forms, V8 and XFA support.</description>
+    <copyright>© 2014 PDFium Authors</copyright>
+    <tags>pdf viewer pdfium</tags>
+  </metadata>
+  <files>
+    <file src="content\pdfium.forms.x64.v8-xfa.props" target="Build\pdfium.forms.x64.v8-xfa.props" />
+    <file src="content\x64\pdfium.dll" target="Build\x64\pdfium.dll" />
+    <file src="content\x64\icudtl.dat" target="Build\x64\icudtl.dat" />
+    <file src="content\x64\snapshot_blob.bin" target="Build\x64\snapshot_blob.bin" />
+  </files>
+</package>

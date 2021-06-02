@@ -9,3 +9,5 @@
 /*.zip
 /pdfium/
 /depot_tools/
+/packaging/win-x64/content/x64/
+/packaging/win-x86/content/x86/

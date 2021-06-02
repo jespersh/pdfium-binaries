@@ -4,24 +4,20 @@ name: CI
 
 # Controls when the action will run. 
 on:
-  # no triggers
-  push:
-    branches: [ ]
-  pull_request:
-    branches: [ ]
-
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+
+env:
+  PDFium_Version: 4522
+  CONFIGURATION: Release
+  GYP_MSVS_VERSION: 2019
+  PDFium_V8: enabled
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build-windows-x86:
     runs-on: windows-latest
     env: 
-      CONFIGURATION: Release
-      GYP_MSVS_VERSION: 2019
-      PDFium_BRANCH: chromium/4522
-      PDFium_V8: enabled
       PLATFORM: x86
       
     steps:
@@ -32,6 +28,12 @@ jobs:
       - name: Run build.bat
         shell: cmd
         run: .\build.bat
+        env:
+          PDFium_BRANCH: chromium/${{ env.PDFium_Version }}
+
+      - name: Run prepareX86.bat
+        shell: cmd
+        run: .\packaging\prepareX86.bat
         
       - uses: actions/upload-artifact@v2
         with:
@@ -39,14 +41,16 @@ jobs:
           path: pdfium-windows-x86-v8.zip
           if-no-files-found: error
 
+      - name: Nuget Pack
+        run: nuget pack .\packaging\win-x86\PDFium.forms.x86.v8-xfa.nuspec -Version ${{ env.PDFium_Version }}.0.${{github.run_number}}
+
+      - name: Nuget Push
+        run: nuget push *.nupkg ${{ secrets.NUGET_UPLOAD_KEY }} -src https://api.nuget.org/v3/index.json
+
 
   build-windows-x64:
     runs-on: windows-latest
     env: 
-      CONFIGURATION: Release
-      GYP_MSVS_VERSION: 2019
-      PDFium_BRANCH: chromium/4522
-      PDFium_V8: enabled
       PLATFORM: x64
       
     steps:
@@ -57,9 +61,21 @@ jobs:
       - name: Run build.bat
         shell: cmd
         run: .\build.bat
+        env:
+          PDFium_BRANCH: chromium/${{ env.PDFium_Version }}
+
+      - name: Run prepareX64.bat
+        shell: cmd
+        run: .\packaging\prepareX64.bat
         
       - uses: actions/upload-artifact@v2
         with:
           name: release-artifact
           path: pdfium-windows-x64-v8.zip
           if-no-files-found: error
+
+      - name: Nuget Pack
+        run: nuget pack .\packaging\win-x64\PDFium.forms.x64.v8-xfa.nuspec -Version ${{ env.PDFium_Version }}.0.${{github.run_number}}
+
+      - name: Nuget Push
+        run: nuget push *.nupkg ${{ secrets.NUGET_UPLOAD_KEY }} -src https://api.nuget.org/v3/index.json
