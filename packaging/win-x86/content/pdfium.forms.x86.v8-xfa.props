@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PdfiumBinariesOutputFolder Condition="'$(PdfiumBinariesOutputFolder)'==''">\</PdfiumBinariesOutputFolder>
     <PdfiumX86BinaryOutputFolder Condition="'$(PdfiumX86BinaryOutputFolder)'==''">x86\</PdfiumX86BinaryOutputFolder>
-    <PdfiumX86IcudtlDatOutputFolder Condition="'$(PdfiumX86IcudtlDatOutputFolder)'==''">$(PdfiumX86BinaryOutputFolder)$(PdfiumX86BinaryOutputFolder)</PdfiumX86IcudtlDatOutputFolder>
+    <PdfiumX86IcudtlDatOutputFolder Condition="'$(PdfiumX86IcudtlDatOutputFolder)'==''">$(PdfiumBinariesOutputFolder)$(PdfiumX86BinaryOutputFolder)</PdfiumX86IcudtlDatOutputFolder>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)x86\pdfium.dll">
