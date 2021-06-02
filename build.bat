@@ -63,6 +63,7 @@ copy "%PDFium_PATCH_DIR%\resources.rc" . || exit /b
 git.exe apply -v "%PDFium_PATCH_DIR%\shared_library.patch" || exit /b
 git.exe apply -v "%PDFium_PATCH_DIR%\relative_includes.patch" || exit /b
 git.exe apply -v "%PDFium_PATCH_DIR%\widestring.patch" || exit /b
+git.exe apply -v "%PDFium_PATCH_DIR%\cpdfsdk_pageview.patch" || exit /b
 if "%PDFium_V8%"=="enabled" git.exe apply -v "%PDFium_PATCH_DIR%\v8_init.patch" || exit /b
 git.exe -C build apply -v "%PDFium_PATCH_DIR%\rc_compiler.patch" || exit /b
 
